@@ -20,3 +20,9 @@ GET /api/v1/oll/${caseId}
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `caseId`      | `string` | **Required**. Id of OLL to fetch |
+
+
+#### Add a new OLL
+```http
+POST /api/v1/oll/${caseId}
+```
