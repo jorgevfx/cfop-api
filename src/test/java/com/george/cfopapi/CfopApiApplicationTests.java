@@ -8,6 +8,7 @@ class CfopApiApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }
