@@ -1,10 +1,13 @@
 package com.george.cfopapi.controller;
 
 import com.george.cfopapi.dto.AlgorithmDTO;
+import com.george.cfopapi.dto.NewAlgorithmDTO;
 import com.george.cfopapi.dto.OllDTO;
 import com.george.cfopapi.model.AlgorithmModel;
 import com.george.cfopapi.model.OllModel;
 import com.george.cfopapi.service.OllService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,11 +44,24 @@ public class OllController {
     */
     @PostMapping("{caseId}")
     public ResponseEntity<AlgorithmDTO> createAlg(
-            @RequestBody AlgorithmDTO algorithmModel,
+            @Valid @RequestBody AlgorithmDTO algorithmDTO,
             @PathVariable String caseId
     ){
         return new ResponseEntity<>(ollService.createAlg(
-                algorithmModel, caseId.toUpperCase()),
+                algorithmDTO, caseId.toUpperCase()),
                 HttpStatus.CREATED);
+    }
+
+    /*
+     PUT REQUESTS
+    */
+    @PutMapping("{caseId}")
+    public ResponseEntity<NewAlgorithmDTO> updateAlg(
+            @Valid @RequestBody NewAlgorithmDTO newAlgorithmDTO,
+            @PathVariable String caseId
+    ){
+        return new ResponseEntity<>(ollService.updateAlg(
+                caseId.toUpperCase(), newAlgorithmDTO),
+                HttpStatus.OK);
     }
 }
