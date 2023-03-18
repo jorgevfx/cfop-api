@@ -1,15 +1,29 @@
 # CFOP API
 This API provides a list of F2L, OLL and PLL algorithms for use in the Rubik's Cube. Also known as the Fridrich Method
 
+### API URL
+`Not yet deployed`
 
-## API Reference
+## API Endpoints
 
-### OLL
 
 #### Get all OLL Algorithms
 
 ```http
 GET /api/v1/oll
+```
+
+`Response`
+```json
+[
+  {
+    "caseId": String,
+    "names": Object,
+    "group": String,
+    "algs": Object
+  }
+  ...
+]
 ```
 #### Get a single OLL
 
@@ -17,12 +31,25 @@ GET /api/v1/oll
 GET /api/v1/oll/${caseId}
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `caseId`      | `string` | **Required**. Id of OLL to fetch |
+`Response`
+```json
+  {
+    "caseId": String,
+    "names": Object,
+    "group": String,
+    "algs": Object
+  }
+```
 
-
-#### Add a new OLL
+#### Add a new algorithm to a specific OLL
 ```http
 POST /api/v1/oll/${caseId}
 ```
+
+`Body and response`
+```json
+  {
+    "moves": String
+  }
+```
+
